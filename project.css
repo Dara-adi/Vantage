@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #050505;
+    --card-bg: #111111;
+    --neo-green: #10b981;
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.hidden-section { display: none !important; }
+
+/* Typography */
+h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em; }
+
+/* Unique Bento Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* The Creative Card Design */
+.bento-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bento-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent);
+    pointer-events: none;
+}
+
+.bento-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--neo-green);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+/* Profession Badge */
+.profession-badge {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--neo-green);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Premium Buttons */
+.action-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-contact {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    border-radius: 18px;
+    font-family: 'Syne';
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-call {
+    background: var(--text-main);
+    color: var(--bg);
+}
+
+.btn-whatsapp {
+    background: var(--neo-green);
+    color: var(--bg);
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Creative Header */
+.portal-header {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.vantage-logo {
+    font-size: 1.8rem;
+    font-style: italic;
+    background: linear-gradient(to right, #fff, var(--neo-green));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-logout {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+/* Form Styling (Auth) */
+.auth-card {
+    background: var(--card-bg);
+    padding: 60px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 480px;
+}
+
+.v-input {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.v-input:focus {
+    border-color: var(--neo-green);
+    outline: none;
+    background: #222;
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: var(--neo-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neo-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- AUTH SECTION EVOLUTION --- */
+#authSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+}
+
+.auth-card {
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    padding: 60px 40px;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    animation: authSlideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+@keyframes authSlideUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- THE "G" BUTTONS --- */
+.v-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--neo-green);
+    color: var(--bg);
+    border: none;
+    border-radius: 20px;
+    font-family: 'Syne';
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.v-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+    filter: brightness(1.1);
+}
+
+.v-btn:active { transform: translateY(0); }
+
+/* --- INPUT POLISH --- */
+.v-input {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 18px 24px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-family: 'Plus Jakarta Sans';
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.v-input:focus {
+    border-color: var(--neo-green);
+    background: rgba(255,255,255,0.07);
+    outline: none;
+}
+
+/* --- BACK BUTTON (MINIMALIST) --- */
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Syne';
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 30px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.back-btn:hover { color: white; letter-spacing: 4px; }
+
+/* --- PREMIUM SELECT & INPUTS --- */
+.v-input, select.v-input {
+    appearance: none; /* Removes default browser arrow */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 18px 24px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Custom Arrow for Select */
+#tradeWrapper {
+    position: relative;
+}
+
+#tradeWrapper::after {
+    content: '↓';
+    font-family: 'Syne';
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    color: var(--neo-green);
+    pointer-events: none;
+    font-size: 12px;
+}
+
+.v-input:focus {
+    border-color: var(--neo-green);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    outline: none;
+}
+
+/* --- THE "CLICK" FEEDBACK (Active States) --- */
+.v-btn {
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.v-btn:active {
+    transform: scale(0.96); /* Sinks the button when clicked */
+    filter: brightness(0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bento-card:active {
+    transform: scale(0.98);
+    border-color: var(--neo-green);
+}
+
+/* Fix for the Dropdown Options (Dark Mode) */
+select option {
+    background-color: #111;
+    color: white;
+    padding: 10px;
+}
+
+.auth-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff, #666);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.toggle-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 25px;
+}
+
+.toggle-text span {
+    color: var(--neo-green);
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* --- RESPONSIVE ADAPTATIONS --- */
+
+@media (max-width: 768px) {
+    /* 1. Scale down the massive typography */
+    .vantage-logo {
+        font-size: 2.5rem;
+    }
+    
+    .auth-title {
+        font-size: 1.8rem;
+    }
+
+    /* 2. Adjust the Bento Grid for single column */
+    .bento-grid {
+        grid-template-columns: 1fr; /* Stack everything */
+        gap: 16px;
+        padding: 15px;
+    }
+
+    /* 3. Make Auth Cards fill more screen space */
+    .auth-card {
+        padding: 40px 24px;
+        width: 90%;
+        margin: 20px auto;
+        border-radius: 30px;
+    }
+
+    /* 4. Fix Header Layout */
+    .portal-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .brand-group {
+        align-items: center;
+    }
+
+    /* 5. Make buttons easier to tap (Mobile UX) */
+    .btn-contact, .v-btn {
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .action-row {
+        flex-direction: column; /* Stack Call and WhatsApp buttons */
+        gap: 10px;
+    }
+
+    .btn-logout {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* --- SMALLER PHONES (iPhone SE, etc.) --- */
+@media (max-width: 480px) {
+    .vantage-logo {
+        font-size: 2rem;
+    }
+    
+    .bento-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        backdrop-filter: blur(10px); /* Lighter blur for mobile performance */
+    }
+}

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VANTAGE | Artisan Marketplace</title>
+    <link rel="stylesheet" href="project.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="portal-header">
+    <div class="brand-group">
+        <h1 class="vantage-logo-small italic font-black text-2xl">VANTAGE</h1>
+        <div class="status-indicator">
+            <span class="dot"></span>
+            <span class="status-text">Network Active</span>
+        </div>
+    </div>
+    <div class="header-actions">
+        <button onclick="logout()" class="btn-logout">Sign Out</button>
+    </div>
+</header>
+
+    <section id="roleSection" class="fade-in">
+        <h1 class="vantage-logo"></h1>
+        <p class="subtitle"></p>
+        <div class="bento-grid">
+            <div onclick="setRole('client')" class="bento-card cursor-pointer">
+                <span class="icon">🤝</span>
+                <h2>HIRER</h2>
+                <p>Find specialized artisans.</p>
+            </div>
+            <div onclick="setRole('artisan')" class="bento-card cursor-pointer">
+                <span class="icon">🛠️</span>
+                <h2>ARTISAN</h2>
+                <p>Register your professional craft.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="authSection" class="hidden-section fade-in">
+        <div class="auth-card">
+            <div id="signupBox">
+                <h2 class="auth-title">JOIN <span id="roleLabel" class="accent-text">...</span></h2>
+                <div class="input-group">
+                    <input type="text" id="regName" placeholder="Full Name" class="v-input">
+                    <input type="tel" id="regPhone" placeholder="Phone Number" class="v-input">
+                    <div id="tradeWrapper" class="hidden-section">
+                        <select id="regTrade" class="v-input">
+                            <option value="" disabled selected>Select Your Trade</option>
+                       
+                                <option>Bricklayer / Mason</option>
+                                <option>Plumber</option>
+                                <option>Electrician</option>
+                                <option>Tiler</option>
+                                <option>Carpenter</option>
+                                <option>Welder</option>
+                                <option>Painter</option>
+                                <option>POP Installer</option>
+                            </optgroup>
+                           
+                                <option>Auto Mechanic</option>
+                                <option>AC Technician</option>
+                                <option>IT / Mobile Technician</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <input type="password" id="regPassword" placeholder="Password" class="v-input">
+                    <button onclick="handleSignup()" class="v-btn">CREATE ACCOUNT</button>
+                </div>
+                <p class="toggle-text">Already a member? <span onclick="toggleAuth('login')">Log In</span></p>
+            </div>
+
+            <div id="loginBox" class="hidden-section">
+                <h2 class="auth-title">LOG IN</h2>
+                <div class="input-group">
+                    <input type="tel" id="loginPhone" placeholder="Phone Number" class="v-input">
+                    <input type="password" id="loginPassword" placeholder="Password" class="v-input">
+                    <button onclick="handleLogin()" class="v-btn">ENTER PORTAL</button>
+                </div>
+                <p class="toggle-text">New here? <span onclick="toggleAuth('signup')">Sign Up</span></p>
+            </div>
+            <button onclick="location.reload()" class="back-btn">← BACK</button>
+        </div>
+    </section>
+
+    <section id="portalSection" class="hidden-section fade-in">
+        <header class="portal-header">
+            <div class="brand-group">
+                <h1 class="vantage-logo-small">VANTAGE</h1>
+                <div class="status-indicator"><span class="dot"></span>System Live</div>
+            </div>
+            <button onclick="logout()" class="btn-logout">Sign Out</button>
+        </header>
+        <div id="dashboardContent" class="bento-grid">
+            </div>
+    </section>
+
+    <script src="project.js"></script>
+</body>
+</html>
